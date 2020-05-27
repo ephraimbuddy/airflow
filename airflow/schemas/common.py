@@ -19,6 +19,9 @@ from marshmallow import Schema, fields
 
 
 class TimeDelta(Schema):
+    """
+    Schema for TimeDelta data type
+    """
     __type = fields.String(required=True)
     days = fields.Integer()
     seconds = fields.Integer()
@@ -26,6 +29,9 @@ class TimeDelta(Schema):
 
 
 class RelativeDelta(Schema):
+    """
+    Schema for RelativeDelta data type
+    """
     __type = fields.String(required=True)
     years = fields.Integer()
     months = fields.Integer()
@@ -45,17 +51,23 @@ class RelativeDelta(Schema):
 
 
 class CronExpression(Schema):
+    """
+    Schema for CronExpression data type
+    """
     __type = fields.String(required=True)
     value = fields.String()
 
 
 class Tag(Schema):
+    """
+    Schema for Tag object
+    """
     name = fields.String()
 
 
 class ClassReference(Schema):
+    """
+    Schema for ClassReference object
+    """
     module_path = fields.String()
     class_name = fields.String()
-
-
-
