@@ -309,7 +309,6 @@ jira = [
 kerberos = [
     'pykerberos>=1.1.13',
     'requests_kerberos>=0.10.0',
-    'snakebite[kerberos]>=2.7.8',
     'thrift_sasl>=0.2.0',
 ]
 kubernetes = [
@@ -478,9 +477,11 @@ devel = [
 ############################################################################################################
 
 if PY3:
+    kerberos += ['snakebite-py3[kerberos]>=3.0.5']
     devel += ['mypy==0.770']
 else:
     devel += ['unittest2']
+    kerberos += ["snakebite[kerberos]>=2.7.8"]
 
 devel_minreq = cgroups + devel + doc + kubernetes + mysql + password
 devel_hadoop = devel_minreq + hdfs + hive + kerberos + presto + webhdfs
