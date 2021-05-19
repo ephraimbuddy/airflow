@@ -23,7 +23,8 @@ kind::get_kind_cluster_name
 
 traps::add_trap kind::dump_kind_logs EXIT HUP INT TERM
 
-for mode in CeleryExecutor LocalExecutor
+for mode in CeleryExecutor KubernetesExecutor
 do
     kind::upgrade_airflow_with_helm "${mode}"
+    "$( dirname "${BASH_SOURCE[0]}" )/ci_run_kubernetes_tests.sh"
 done
