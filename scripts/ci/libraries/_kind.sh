@@ -354,6 +354,8 @@ function kind::upgrade_airflow_with_helm() {
     cp -r "${AIRFLOW_SOURCES}/chart" "${chartdir}"
 
     pushd "${chartdir}/chart" >/dev/null 2>&1 || exit 1
+    helm repo add stable https://charts.helm.sh/stable/
+    helm dep update
     helm upgrade airflow . --namespace "${HELM_AIRFLOW_NAMESPACE}" \
         --set "defaultAirflowRepository=${DOCKERHUB_USER}/${DOCKERHUB_REPO}" \
         --set "images.airflow.repository=${DOCKERHUB_USER}/${DOCKERHUB_REPO}" \
